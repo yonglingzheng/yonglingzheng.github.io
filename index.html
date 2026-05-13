@@ -7,81 +7,197 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: Georgia, serif; background-color: #f5f4f0; color: #2c2c2c; }
-    .hero { display: flex; align-items: center; justify-content: center; gap: 60px; padding: 80px 10%; background-color: #f0ede8; min-height: 480px; flex-wrap: wrap; }
-    .hero-text h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; }
+
+    /* HERO */
+    .hero {
+      display: flex; align-items: center; justify-content: center;
+      gap: 60px; padding: 80px 10%; background-color: #f0ede8;
+      min-height: 480px; flex-wrap: wrap;
+    }
+    .hero-text h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
     .hero-text p { font-size: 1.4rem; color: #555; font-family: Arial, sans-serif; }
-    .hero-photo-placeholder { width: 280px; height: 340px; background: #d5d0c8; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.9rem; }
-    .section { max-width: 860px; margin: 0 auto; padding: 60px 30px; }
-    .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 30px; }
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .story-block p { font-family: Arial, sans-serif; font-size: 0.95rem; line-height: 1.8; color: #444; }
+    .hero-photo {
+      width: 300px; height: 360px; object-fit: cover; object-position: top;
+      border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    /* SECTION */
+    .section { max-width: 900px; margin: 0 auto; padding: 60px 30px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 30px; }
+
+    /* STORY */
+    .story-section { background: #f0ede8; padding: 60px 10%; }
+    .story-inner { max-width: 1000px; margin: 0 auto; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-top: 30px; }
+    .story-image-block { display: flex; flex-direction: column; gap: 20px; }
+    .story-img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    .story-text-block p { font-family: Arial, sans-serif; font-size: 0.95rem; line-height: 1.85; color: #444; margin-bottom: 18px; }
+
+    /* AWARD & 1MC side by side */
+    .milestone-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+      max-width: 1000px; margin: 0 auto; padding: 50px 30px;
+    }
+    .milestone-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .milestone-card img { width: 100%; height: 240px; object-fit: cover; }
+    .milestone-card .card-body { padding: 20px; }
+    .milestone-card .card-body p { font-family: Arial, sans-serif; font-size: 0.9rem; line-height: 1.75; color: #444; }
+
+    /* BADGES */
     .badges { background-color: #ebe8e2; padding: 50px 10%; }
-    .badges-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 30px; flex-wrap: wrap; }
-    .badge { background: white; border-radius: 50px; padding: 16px 28px; font-size: 0.85rem; font-family: Arial, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .badges-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }
+    .badge { background: white; border-radius: 50px; padding: 14px 26px; font-size: 0.85rem; font-family: Arial, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .badge strong { display: block; font-size: 1rem; margin-bottom: 4px; }
-    .projects-title { text-align: center; font-size: 1.6rem; font-weight: 700; padding: 60px 0 10px; }
-    .projects-sub { text-align: center; font-family: Arial, sans-serif; font-size: 0.85rem; color: #666; max-width: 700px; margin: 0 auto 50px; padding: 0 20px; line-height: 1.7; }
-    .projects-grid { max-width: 900px; margin: 0 auto; padding: 0 30px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .project-card { background: white; border-radius: 10px; padding: 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .project-card .role { font-family: Arial, sans-serif; font-size: 0.82rem; color: #666; margin-bottom: 12px; }
+
+    /* PROJECTS */
+    .projects-section { background: #f8f7f4; padding: 70px 10%; }
+    .projects-inner { max-width: 1000px; margin: 0 auto; }
+    .projects-header { text-align: center; margin-bottom: 14px; }
+    .projects-header h2 { font-size: 1.8rem; font-weight: 700; }
+    .projects-sub { text-align: center; font-family: Arial, sans-serif; font-size: 0.85rem; color: #666; max-width: 720px; margin: 0 auto 50px; line-height: 1.7; }
+    .projects-img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    .projects-img-block { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .projects-img-block img { width: 100%; display: block; }
+    .projects-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px; }
+    .project-card { background: white; border-radius: 10px; padding: 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .project-card .role { font-family: Arial, sans-serif; font-size: 0.82rem; color: #666; margin-bottom: 10px; }
     .project-card a { display: inline-block; font-family: Arial, sans-serif; font-size: 0.82rem; color: #3a7bd5; text-decoration: none; border-bottom: 1px solid #3a7bd5; }
-    .about { background-color: #f0ede8; }
+
+    /* ABOUT */
+    .about { background-color: #f0ede8; padding: 60px 10%; }
+    .about-inner { max-width: 900px; margin: 0 auto; }
+    .about-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; }
     .about p { font-family: Arial, sans-serif; font-size: 0.95rem; line-height: 1.85; color: #444; margin-bottom: 18px; }
+
     footer { text-align: center; padding: 30px; font-family: Arial, sans-serif; font-size: 0.8rem; color: #999; background: #e8e4de; }
-    @media (max-width: 640px) { .hero { flex-direction: column; text-align: center; gap: 30px; } .hero-text h1 { font-size: 2.2rem; } .story-grid, .projects-grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 700px) {
+      .hero { flex-direction: column; text-align: center; gap: 30px; }
+      .hero-text h1 { font-size: 2.2rem; }
+      .story-grid, .milestone-row, .projects-img-row, .projects-cards { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
     <h1>Yong ling zheng</h1>
     <p>Founder &amp; AI Product Builder</p>
   </div>
-  <div class="hero-photo-placeholder">[Your Photo Here]</div>
+  <img class="hero-photo" src="photo.jpg" alt="Yong Ling Zheng" />
 </section>
-<div class="section">
-  <div class="section-title">My story:</div>
-  <div class="story-grid">
-    <div class="story-block">
-      <p>I immigrated to the U.S. 11 years ago expecting a stable life, but during COVID-19, I became a single mother and had to rebuild from zero.</p>
-      <br/>
-      <p>While working multiple jobs, I discovered AI in early 2025 and fell in love with software development for its creativity and impact.</p>
-    </div>
-    <div class="story-block">
-      <p>My daughters are now my startup teammates. My younger daughter, Brianna, designed the Webie logo using ChatGPT.</p>
-      <br/>
-      <p>My older daughter Siyu also actively participated and presented with me at 1 Million Cups in July.</p>
-      <br/>
-      <p>In October 2025, our team won First Place in an Orlando tech startup competition.</p>
+
+<!-- MY STORY -->
+<div class="story-section">
+  <div class="story-inner">
+    <div class="section-title">My story:</div>
+    <div class="story-grid">
+      <div class="story-image-block">
+        <img class="story-img" src="story.jpg" alt="My story - Brianna and Webie logo" />
+      </div>
+      <div class="story-text-block">
+        <p>I immigrated to the U.S. 11 years ago expecting a stable life, but during COVID-19, I became a single mother and had to rebuild from zero.</p>
+        <p>While working multiple jobs, I discovered AI in early 2025 and fell in love with software development for its creativity and impact.</p>
+        <p>My daughters are now my startup teammates. My younger daughter, Brianna, designed the Webie logo using ChatGPT.</p>
+        <p>My older daughter Siyu also actively participated and presented with me at 1 Million Cups in July.</p>
+        <p>In October 2025, our team won <strong>First Place</strong> in an Orlando tech startup competition.</p>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- MILESTONES: 1MC + Award -->
+<div class="milestone-row">
+  <div class="milestone-card">
+    <img src="1millioncups.jpg" alt="Presenting at 1 Million Cups" />
+    <div class="card-body">
+      <p><strong>1 Million Cups — July 2025</strong><br/>My daughter Siyu and I presented our AI-Enhanced Smart Dog Collar project, OnBark, together on stage.</p>
+    </div>
+  </div>
+  <div class="milestone-card">
+    <img src="award.jpg" alt="Orlando Tech Startup Competition - First Place" />
+    <div class="card-body">
+      <p><strong>🏆 First Place — Orlando Tech Startup Competition, October 2025</strong><br/>Our team brought home first place at the Informulate startup competition in Orlando.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BADGES -->
 <div class="badges">
   <div class="badges-inner">
-    <div class="badge"><strong>Innovative Designer</strong>Fashion designer · Factory founder · Online store owner</div>
-    <div class="badge"><strong>Event Queen</strong>Thousands of events. Insurance &amp; Real estate agent, Multiple industries. Real connections.</div>
+    <div class="badge">
+      <strong>Innovative Designer</strong>
+      Fashion designer &middot; Factory founder &middot; Online store owner
+    </div>
+    <div class="badge">
+      <strong>Event Queen</strong>
+      Thousands of events. Insurance &amp; Real estate agent, Manufacturer's rep, Multiple industries. Real connections.
+    </div>
   </div>
 </div>
-<div class="projects-title">My Projects in 2025</div>
-<p class="projects-sub">I was involved in and controlled the entire project, from the initial idea to functional architecture design, UI/UX design, programming, testing, marketing, and all other processes.</p>
-<div class="projects-grid">
-  <div class="project-card"><h3>Webie.app</h3><div class="role">Business Card / Networking Assistant · Software + Hardware</div><a href="https://webie.app" target="_blank">webie.app</a></div>
-  <div class="project-card"><h3>Prayly.ai</h3><div class="role">AI-powered prayer assistant · Designer: UI, UX, &amp; functional</div></div>
-  <div class="project-card"><h3>Localbuddy</h3><div class="role">Part-time Job Platform · Designer: UI, UX, &amp; functional</div></div>
-  <div class="project-card"><h3>Moneycat</h3><div class="role">Expense Tracking · I developed the entire app</div></div>
-  <div class="project-card"><h3>lunchboxed.me</h3><div class="role">Meal Delivery Platform · Designer: UI, UX, &amp; functional</div></div>
+
+<!-- PROJECTS -->
+<div class="projects-section">
+  <div class="projects-inner">
+    <div class="projects-header"><h2>My Projects in 2025</h2></div>
+    <p class="projects-sub">I was involved in and controlled the entire project — from the initial idea to functional architecture design, UI/UX design, programming, testing, marketing, and all other processes.</p>
+
+    <div class="projects-img-row">
+      <div class="projects-img-block">
+        <img src="projects1.jpg" alt="Prayly.ai and Localbuddy" />
+      </div>
+      <div class="projects-img-block">
+        <img src="projects2.jpg" alt="Moneycat and Lunchboxed" />
+      </div>
+    </div>
+
+    <div class="projects-img-row" style="margin-top:0;">
+      <div class="projects-img-block" style="grid-column: 1 / -1;">
+        <img src="webie.jpg" alt="Webie.app" />
+      </div>
+    </div>
+
+    <div class="projects-cards">
+      <div class="project-card">
+        <h3>Webie.app</h3>
+        <div class="role">Business Card / Networking Assistant &middot; Software + Hardware</div>
+        <a href="https://webie.app" target="_blank">webie.app &rarr;</a>
+      </div>
+      <div class="project-card">
+        <h3>Prayly.ai</h3>
+        <div class="role">AI-powered prayer assistant &middot; Designer: UI, UX, &amp; functional</div>
+      </div>
+      <div class="project-card">
+        <h3>Localbuddy</h3>
+        <div class="role">Part-time Job Platform &middot; Designer: UI, UX, &amp; functional</div>
+      </div>
+      <div class="project-card">
+        <h3>Moneycat</h3>
+        <div class="role">Expense Tracking &middot; I developed the entire app</div>
+      </div>
+      <div class="project-card">
+        <h3>lunchboxed.me</h3>
+        <div class="role">Meal Delivery Platform &middot; Designer: UI, UX, &amp; functional</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ABOUT -->
 <div class="about">
-  <div class="section">
-    <div class="section-title">A bit more about me:</div>
-    <p>I was born into a business family. From a young age, I knew I was meant to be an entrepreneur.</p>
+  <div class="about-inner">
+    <div class="about-title">A bit more about me:</div>
+    <p>I was born into a business family — nearly all my relatives run factories or businesses. From a young age, I knew I was meant to be an entrepreneur.</p>
     <p>I studied Fashion Design and Business Management in college, and went on to build my own sportswear brand, factory, and e-commerce business. By 2012, I became one of the top sellers in dancewear on Alibaba.</p>
-    <p>In 2014, I immigrated to the U.S. and initially stepped away from business. However, during the pandemic, I made the decision to leave my marriage and start over as a single mother.</p>
+    <p>In 2014, I immigrated to the U.S. and initially stepped away from business. However, during the pandemic, my ex-husband suffered major financial losses after shorting Tesla, which led to severe mental health issues and domestic violence. I made the decision to leave the marriage and start over as a single mother.</p>
     <p>I re-entered the workforce as an insurance agent and real estate agent, while also helping Chinese companies participate in trade shows and expand their business in the U.S.</p>
     <p>At the same time, I began learning programming and eventually founded my own high-tech company.</p>
   </div>
 </div>
-<footer>© 2025 Yong Ling Zheng · Built with love</footer>
+
+<footer>&copy; 2025 Yong Ling Zheng &middot; Built with love</footer>
 </body>
 </html>
